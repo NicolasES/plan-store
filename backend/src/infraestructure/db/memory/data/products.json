@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Guitarra",
+    "value": 400
+  },
+  {
+    "id": "2",
+    "name": "mesa",
+    "value": 259.99
+  },
+  {
+    "id": "3",
+    "name": "Notebook",
+    "value": 3799.99
+  },
+  {
+    "id": "4",
+    "name": "Pneu",
+    "value": 350
+  }
+]
