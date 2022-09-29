@@ -1,5 +1,5 @@
 ## Como executar a API
-* Acessar o diretório VxTel/
+
 * Baixar e instalar as dependências com o comando:
 ```
 npm install
@@ -17,7 +17,6 @@ ou para rodar os testes e coletar a cobertura de código:
 ```
 npm run test-coverage
 ```
-* Poderá ver mais detalhes da cobertura de testes em `VxTel/coverage/index.html`
 
 ### Algumas bibliotecas utilizadas na API:
 - Typescript (https://www.typescriptlang.org/)
@@ -26,13 +25,3 @@ npm run test-coverage
 - yup (https://github.com/jquense/yup) - para validação de dados de entrada
 - dotenv (https://github.com/motdotla/dotenv) - para variáveis de ambiente 
 - jest (https://jestjs.io/pt-BR/) para execução de testes
-
--------------------------->
-
-- produto
-- carrinho
-- item do carrinho
-- plano
-- região de entrega
-
-o frete muda 
