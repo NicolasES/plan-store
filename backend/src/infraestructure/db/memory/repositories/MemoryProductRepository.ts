@@ -10,4 +10,11 @@ export default class MemoryProductRepository implements ProductRepository {
     return this.productData.map(el => new Product(el))
   }
 
+  async find(id: string): Promise<Product | null> {
+    const result = this.productData.find(el => el.id == id)
+    if(result) {
+      return new Product(result)
+    }
+    return null
+  }
 }

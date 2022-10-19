@@ -1,13 +1,13 @@
 
 const mockData = [
   {
-    id: "1",
-    name: "product-fake-1",
+    id: '1',
+    name: 'product-fake-1',
     value: 400
   },
   {
-    id: "2",
-    name: "product-fake-2",
+    id: '2',
+    name: 'product-fake-2',
     value: 259.99
   },
 ]
@@ -29,5 +29,12 @@ describe('MemoryProductRepository', () => {
 
     const result = await repository.getAll()
     expect(result).toEqual(expected)
+  })
+
+  it('should find a product', async () => {
+    const product = new Product(mockData[0])
+
+    const repository = new MemoryProductRepository()
+    const result = await repository.find('1')
   })
 })
