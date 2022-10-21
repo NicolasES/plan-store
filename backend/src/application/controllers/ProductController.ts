@@ -10,6 +10,6 @@ export default class ProductController {
 
   async getAllProducts(_req: Request, res: Response) {
     const result = await this.getProducts.getAllProducts()
-    res.json(result)
+    return res.json(result)
   }
 }
