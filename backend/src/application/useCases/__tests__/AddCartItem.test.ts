@@ -22,10 +22,16 @@ describe('AddCartItem', () => {
   it('should add a product to shopping cart', async () => {
     const addCartItem = new AddCartItem(shoppingCartRepositoryMock, producRepositoryMock)
 
-    // expect(() => addCartItem.run('productId', 3)).not.toThrow()
     await expect(addCartItem.execute('produc', 3)).resolves.toBeUndefined()
     expect(producRepositoryMock.find).toBeCalled()
     expect(shoppingCartRepositoryMock.getShoppingCart).toBeCalled()
     expect(shoppingCartRepositoryMock.save).toBeCalled()
+  })
+
+  it('should throw an erro with product not found', async () => {
+    producRepositoryMock.find = jest.fn().mockResolvedValueOnce(null)
+
+    const addCartItem = new AddCartItem(shoppingCartRepositoryMock, producRepositoryMock)
+    await expect(addCartItem.execute('produc', 3)).rejects.toEqual(new Error('Product not found'))
   })
 })

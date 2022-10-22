@@ -36,5 +36,13 @@ describe('MemoryProductRepository', () => {
 
     const repository = new MemoryProductRepository()
     const result = await repository.find('1')
+    expect(result).toEqual(product)
+  })
+
+  it('should return null when not finding a product', async () => {
+
+    const repository = new MemoryProductRepository()
+    const result = await repository.find('3')
+    expect(result).toBe(null)
   })
 })
