@@ -10,7 +10,7 @@ export default class GetProducts {
     private readonly productRepository: ProductRepository
   ) { }
 
-  getAllProducts(): Promise<Array<Product>> {
+  execute(): Promise<Array<Product>> {
     return this.productRepository.getAll()
   }
 }

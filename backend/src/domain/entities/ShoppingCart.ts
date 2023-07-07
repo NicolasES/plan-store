@@ -6,6 +6,11 @@ export default class ShoppingCart {
 
   addProduct(product: Product, quantity: number) {
     const cartItem = new CartItem({ product, quantity })
+    
+    const itemIndex = this.itemList.findIndex(el => {
+      return el.getProduct().getId() == product.getId()
+    })
+
     this.itemList.push(cartItem)
   }
 

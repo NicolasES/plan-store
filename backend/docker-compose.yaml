@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+      
+# networks:
+#   my-network:
+#     external: true

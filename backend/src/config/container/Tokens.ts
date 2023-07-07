@@ -1,7 +1,10 @@
 const TOKENS = {
+  CacheData: Symbol('CacheData'),
+
   ProductRepository: Symbol('ProductRepository'),
+  ShoppingCartRepository: Symbol('ShoppingCartRepository')
 }
 
-export  {
+export {
   TOKENS
 }

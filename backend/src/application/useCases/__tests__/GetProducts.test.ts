@@ -15,7 +15,7 @@ describe('GetProducts', () => {
   it('should get all producst', async () => {
     const getProducts = new GetProducts(mockProductRepository)
 
-    const products = await getProducts.getAllProducts()
+    const products = await getProducts.execute()
     expect(mockProductRepository.getAll).toBeCalled()
     expect(products).toEqual(mockProductss)
   })

@@ -3,5 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export default {
-  PORT: Number(process.env.PORT)
+  PORT: Number(process.env.PORT),
+  REDIS_HOST: process.env.REDIS_HOST,
+  REDIS_PORT: Number(process.env.REDIS_PORT)
 }
