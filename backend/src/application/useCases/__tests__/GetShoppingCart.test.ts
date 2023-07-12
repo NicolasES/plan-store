@@ -1,8 +1,12 @@
 import GetShoppingCart from "@application/useCases/GetShoppingCart"
 import ShoppingCartRepository from "@domain/repositories/ShoppingCartRepository"
 
+const mockShoppingCart = {
+  getList: jest.fn()
+}
+
 const mockShoppingCartRepository = {
-  getShoppingCart: jest.fn()
+  getShoppingCart: jest.fn().mockResolvedValue(mockShoppingCart)
 } as unknown as ShoppingCartRepository
 
 describe('GetShoppingCart', () => {

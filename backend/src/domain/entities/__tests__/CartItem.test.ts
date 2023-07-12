@@ -1,7 +1,7 @@
 import CartItem from '@domain/entities/CartItem'
 import Product from '@entities/Product'
 
-describe('ShoppingCart', () => {
+describe('CartItem', () => {
   it('should create a new CartItem', () => {
     const product = {} as unknown as Product    
 

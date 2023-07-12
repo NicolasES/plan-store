@@ -1,9 +1,10 @@
 import { inject, injectable } from 'tsyringe'
 import { TOKENS } from '@config/container/Tokens'
-import ShoppingCart from "@domain/entities/ShoppingCart";
-import ShoppingCartRepository from "@domain/repositories/ShoppingCartRepository";
+import ShoppingCart from "@domain/entities/ShoppingCart"
+import ShoppingCartRepository from "@domain/repositories/ShoppingCartRepository"
 import ProductRepository from '@domain/repositories/ProductRepository'
-import CacheData from "@domain/repositories/CacheData";
+import CacheData from "@domain/repositories/CacheData"
+import CartItem from '@domain/entities/CartItem'
 
 @injectable()
 export default class ShoppingCartCacheRepository implements ShoppingCartRepository {
@@ -21,24 +22,29 @@ export default class ShoppingCartCacheRepository implements ShoppingCartReposito
 
     const cacheData = await this.cache.get(this.cacheKey)
     if (!cacheData) {
-      return shoppingCart;
+      return shoppingCart
     }
 
+    const cartItemList: CartItem[] = []
+
     for (const item of JSON.parse(cacheData)) {
-      const product = await this.productRepository.find(item.productId)
+      const product = await this.productRepository.find(item.product.id)
       if (product) {
-        shoppingCart.addProduct(product, item.quantity)
+        const cartIemData = new CartItem({
+          id: item.id,
+          product: product,
+          quantity: item.quantity
+        })
+        cartItemList.push(cartIemData)
       }
     }
 
+    shoppingCart.setList(cartItemList)
     return shoppingCart
   }
 
   async save(shoppingCart: ShoppingCart): Promise<void> {
-    const itemsData = shoppingCart.getList().map(el => {
-      return { productId: el.getProduct().getId()!, quantity: el.getQuantity() }
-    })
-
+    const itemsData = shoppingCart.getList()
     this.cache.set(this.cacheKey, JSON.stringify(itemsData))
   }
 }

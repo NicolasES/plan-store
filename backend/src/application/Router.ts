@@ -24,6 +24,7 @@ export default class Router {
     server.get('/products', (req, res, next) => this.ProductController.getAllProducts(req, res, next))
     server.get('/shopping-cart', (req, res, next) => this.ShoppingCartController.runGetShoppingCart(req, res, next))
     server.post('/shopping-cart/item', (req, res, next) => this.ShoppingCartController.addToCart(req, res, next))
+    server.delete('/shopping-cart/item/:cartItemId', (req, res, next) => this.ShoppingCartController.removeFromCart(req, res, next))
 
     server.use(ErrorMiddleware)
   }

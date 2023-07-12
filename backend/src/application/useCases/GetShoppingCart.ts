@@ -9,7 +9,8 @@ export default class GetShoppingCart {
         private readonly shoppingCartRepository: ShoppingCartRepository
     ) {}
 
-    execute() {
-        return this.shoppingCartRepository.getShoppingCart()
+    async execute() {
+        const shoppingCart= await this.shoppingCartRepository.getShoppingCart()
+        return shoppingCart.getList()
     }
 }
