@@ -79,4 +79,27 @@ describe('ShoppingCart', () => {
 
     expect(shoppingCart.getList()).toEqual(expectedList)
   })
+
+  it('should set the item list', () => {
+    mockGenerateId.mockImplementation(
+      jest.fn().mockReturnValueOnce('fakeId1')
+        .mockReturnValueOnce('fakeId2')
+        .mockReturnValueOnce('fakeId3')
+    )
+
+    const cartItem1 = new CartItem({ product, quantity: 1 })
+    const cartItem2 = new CartItem({ product, quantity: 2 })
+    const cartItem3 = new CartItem({ product, quantity: 3 })
+
+    const shoppingCart = new ShoppingCart()
+    shoppingCart.setList([cartItem1, cartItem2, cartItem3])
+
+    let expectedList = [
+      { id: 'fakeId1', product, quantity: 1 } as unknown as CartItem,
+      { id: 'fakeId2', product, quantity: 2 } as unknown as CartItem,
+      { id: 'fakeId3', product, quantity: 3 } as unknown as CartItem
+    ]
+
+    expect(shoppingCart.getList()).toEqual(expectedList)
+  })
 })
