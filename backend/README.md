@@ -25,5 +25,5 @@ npm run test-coverage
 - yup (https://github.com/jquense/yup) - para validação de dados de entrada
 - dotenv (https://github.com/motdotla/dotenv) - para variáveis de ambiente 
 - jest (https://jestjs.io/pt-BR/) para execução de testes
-- reids (https://redis.io/) - cache de dados
+- redis (https://redis.io/) - cache de dados
 - mongoose (https://mongoosejs.com/) - banco de dados não relacional
