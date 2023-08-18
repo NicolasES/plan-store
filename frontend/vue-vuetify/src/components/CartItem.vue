@@ -52,8 +52,8 @@ export default {
   methods: {
     removeFromCart() {
       this.$http.delete('shopping-cart/item/' + this.cartItem.id)
-        .then((res) => {
-          console.log(res.data)
+        .then(() => {
+          this.$emit('cartItemRemoved', this.cartItem.id)
         })
     }
   }

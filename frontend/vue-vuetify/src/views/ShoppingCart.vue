@@ -4,7 +4,7 @@
       <v-col cols="6">
         <v-row dense>
           <v-col cols="12" v-for="el in cartItems" :key="el.id">
-            <CartItem :cartItem="el"/>
+            <CartItem :cartItem="el" @cartItemRemoved="removeCartItem"/>
           </v-col>
         </v-row>
       </v-col>
@@ -63,6 +63,13 @@ export default {
       .then((res) => {
         this.cartItems = res.data
       })
+  },
+
+  methods: {
+    removeCartItem(cartItemId) {
+      const itemIndex = this.cartItems.findIndex((el) => el.id == cartItemId)
+      this.cartItems.splice(itemIndex, 1)
+    }
   }
 }
 </script>
