@@ -9,6 +9,7 @@ import { loadFonts } from './webfontloader'
 import vuetify from './vuetify'
 import router from '../router'
 import axios from './axios'
+import filters from './filters'
 
 export function registerPlugins (app) {
   loadFonts()
@@ -16,9 +17,5 @@ export function registerPlugins (app) {
   app
     .use(vuetify)
     .use(router)
-    // .use({
-    //   install() {
-    //     app.config.globalProperties.$http = axios
-    //   }
-    // })
+    .use(filters)
 }

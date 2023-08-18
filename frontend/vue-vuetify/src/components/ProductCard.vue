@@ -8,11 +8,11 @@
 
     <v-card-item>
       <v-card-title>
-        {{ ucfirst(product.name) }}
+        {{ $filters.ucfirst(product.name) }}
       </v-card-title>
 
       <v-card-subtitle class="price-value">
-        {{ currency(product.value) }}
+        {{ $filters.currency(product.value) }}
       </v-card-subtitle>
     </v-card-item>
 
@@ -36,14 +36,6 @@ export default {
   props: ['product'],
 
   methods: {
-    currency(value) {
-      return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
-    },
-
-    ucfirst(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1)
-    },
-
     addToCart() {
       this.$http.post('shopping-cart/item',
         {

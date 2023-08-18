@@ -1,30 +1,46 @@
 <template>
   <v-card color="#CFD8DC">
     <div class="d-flex">
-      <v-avatar class="ma-3" size="130" rounded="0">
-        <v-img src="@/assets/img/note.jpg"></v-img>
-      </v-avatar>
-      <div>
-        <v-card-title class="text-h5">
-          {{ cartItem.product.name }}
+      <v-img alt="image product" src="@/assets/img/note.jpg" max-width="120" class="ma-3"></v-img>
+
+      <div class="d-flex flex-column align-center justify-center">
+        <v-card-title>
+          {{ $filters.ucfirst(cartItem.product.name) }}
         </v-card-title>
 
-        <v-card-subtitle>{{ cartItem.product.value }}</v-card-subtitle>
+        <div>
+          {{ cartItem.quantity }} X
+          {{ $filters.currency(cartItem.product.value) }}
+        </div>
+      </div>
 
-        <v-card-actions>
-          <v-btn @click="removeFromCart" prepend-icon="mdi-check-circle" prepend="mdi-account-circle" variant="outlined" size="small">
-            <template v-slot:prepend>
-              <v-icon color="red"></v-icon>
-            </template>
 
-            Remover
+      <div class="ml-auto d-flex flex-column align-center justify-end">
 
-          </v-btn>
-        </v-card-actions>
+        <div>
+          <strong class="text-red-lighten-1">
+            {{ $filters.currency(cartItem.quantity * cartItem.product.value) }}
+          </strong>
+        </div>
 
+        <div>
+
+          <v-card-actions>
+            <v-btn @click="removeFromCart" prepend-icon="mdi-check-circle" prepend="mdi-account-circle" variant="outlined"
+              size="small">
+              <template v-slot:prepend>
+                <v-icon color="red"></v-icon>
+              </template>
+
+              Remover
+
+            </v-btn>
+          </v-card-actions>
+        </div>
 
       </div>
     </div>
+
   </v-card>
 </template>
   
