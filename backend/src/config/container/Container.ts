@@ -13,6 +13,10 @@ import ShoppingCartCacheRepository from '@infraestructure/db/memory/repositories
 myContainer.register(TOKENS.ProductRepository, ProductMongoRepository)
 myContainer.register(TOKENS.ShoppingCartRepository, ShoppingCartCacheRepository)
 
+//Logs
+import WinstonRequestLogger from '@infraestructure/logging/WinstonRequestLogger'
+myContainer.registerSingleton(TOKENS.RequestLogger, WinstonRequestLogger)
+
 export {
   myContainer as container
 }

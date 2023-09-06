@@ -19,6 +19,8 @@
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
     "uuid": "^9.0.0",
+    "winston": "^3.10.0",
+    "winston-elasticsearch": "^0.17.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {

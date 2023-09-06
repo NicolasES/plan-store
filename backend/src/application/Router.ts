@@ -7,6 +7,7 @@ import ErrorMiddleware from '@application/middlewares/ErrorMiddleware'
 // controllers
 import ProductController from '@application/controllers/ProductController'
 import ShoppingCartController from '@application/controllers/ShoppingCartController'
+import RequestLogMiddleware from './middlewares/RequestLogMiddleware'
 
 @injectable()
 export default class Router {
@@ -17,6 +18,8 @@ export default class Router {
   ) {}
 
   async setRoutes(server: Application) {
+    server.use(RequestLogMiddleware)
+
     server.get('/', (_req: Request, res: Response) => {
       res.send('App ok - ' + (new Date()))
     })

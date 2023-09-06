@@ -9,8 +9,9 @@ services:
       - 3000:3000
     volumes:
       - .:/home/node/app
-    extra_hosts:
-      - "host.docker.internal:172.17.0.1"
+    # extra_hosts:
+    #   - "host.docker.internal:172.17.0.1"
+
   redis:
     image: redis
     ports:
@@ -24,7 +25,20 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
-      
-# networks:
-#   my-network:
-#     external: true
+    
+  elasticsearch01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: false
+
+  kibana01:
+    image: docker.elastic.co/kibana/kibana:8.9.1
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch01:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch01:9200
