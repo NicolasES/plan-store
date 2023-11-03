@@ -1,0 +1,8 @@
+implementar carrinho de compras no front
+
+
+
+ajustar retorno de erro ao tentar adicionar um produto com id invalido no carrinho
+ajustar codigos para retorno "product not found" 404
+
+lembrar: tem que ter estoque
